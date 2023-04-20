@@ -3,6 +3,10 @@ import { Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import { useLocation  } from 'react-router-dom';
 import "./App.css";
+import axios from 'axios';
+
+//axios.defaults.baseURL = 'http://localhost:3001'  // genero base url a usar en actions  //! BACK LOCAL
+axios.defaults.baseURL = 'https://back-pi-dogs-production.up.railway.app/' //! DOMINIO DEPLOY DEL BACK
 
 function App() {
   const location = useLocation();
