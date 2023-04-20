@@ -38,7 +38,7 @@ const reducer = (state=initialState, action) =>{
       case UPDATE_DOG:
             let id = action.payload.id;
            
-            return{...state, dogs: [...state.dogs.filter(dog=> dog.id !== id), action.payload], dogs: [...state.dogs_backup.filter(dog=> dog.id !== id), action.payload]  }
+            return{...state, dogs: [...state.dogs.filter(dog=> dog.id !== id), action.payload], dogs_backup: [...state.dogs_backup.filter(dog=> dog.id !== id), action.payload]  }
 
       case DELETE_DOG:
             return({

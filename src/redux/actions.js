@@ -1,7 +1,8 @@
-import axios from 'axios';
-
-
 import { SORT_HEIGHT,GET_TEMPERAMENTS, GET_DOG, GET_DOGS, GET_DOG_BY_NAME, FILTER_BY_SOURCE, FILTER_BY_TEMPERAMENTS, SORT_NAME, SORT_WEIGHT, REMOVE_FILTERS, CLEAN_DOG_DETAILS, LOADING, CREATE_DOG, UPDATE_DOG, DELETE_DOG} from './actionTypes';
+
+import axios from 'axios';
+//const SERVER_URL = 'http://localhost:3001';
+
 
 export const getDogs = () => {
     return async function(dispatch){
@@ -24,14 +25,14 @@ export const getDog = (id) => {
 
 export const getDogByName =(name) =>{
     return async function (dispatch){
-        const dog = (await axios.get(`${SERVER_URL}/dogs?name=${name}`)).data;
+        const dog = (await axios.get(`/dogs?name=${name}`)).data;
         dispatch({type: GET_DOG_BY_NAME, payload:dog})
     }
 }
 
 export const getTemperaments = ()=>{
     return async function (dispatch){
-        const temp = (await axios.get(`${SERVER_URL}/temperaments`)).data
+        const temp = (await axios.get(`/temperaments`)).data
         dispatch({type: GET_TEMPERAMENTS, payload: temp})    
     }
 }
@@ -45,7 +46,7 @@ export const setLoading = ()=>{
 export const createDog = (form)=>{
     return async function(dispatch){
         try{
-            const create = (await axios.post(`${SERVER_URL}/dogs`, form)).data
+            const create = (await axios.post(`/dogs`, form)).data
              dispatch({type: CREATE_DOG, payload: create})
     } catch(error){
         alert(error.create)
@@ -57,10 +58,10 @@ export const createDog = (form)=>{
 export function deleteDog(id) {
     return async function(dispatch){
         try{
-            await axios.delete(`${SERVER_URL}/dogs/${id}`)
+            await axios.delete(`/dogs/${id}`)
             return (
                 dispatch({
-                        type: "DELETE_DOG",
+                        type: DELETE_DOG,
                         payload: id  
                 })
             )       
@@ -72,7 +73,7 @@ export function deleteDog(id) {
 }
 export const updateDog=(id)=>{
     return async function(dispatch){
-        const update = (await axios.put(`${SERVER_URL}/dogs/${id}`))
+        const update = (await axios.put(`/dogs/${id}`))
         dispatch({type:UPDATE_DOG, payload:update})
     }
 }

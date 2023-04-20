@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'; //ahora la app tiene la capacidad dde definir rutas
 import { Provider } from 'react-redux';
 import store from './redux/store';
-//import axios from 'axios';
+import axios from 'axios';
 
-//axios.defaults.baseURL = 'http://localhost:3001'  // genero base url a usar en actions  //! BACK LOCAL
-//axios.defaults.baseURL = 'https://back-pi-dogs-production.up.railway.app/' //! DOMINIO DEPLOY DEL BACK
+//axios.defaults.baseURL = 'http://localhost:3001'   //! BACK LOCAL
+axios.defaults.baseURL = 'https://back-pi-dogs-production.up.railway.app/' //! DOMINIO DEPLOY DEL BACK 
+ // CREO base url a usar en cada axios llamado en actions en este caso
 
 ReactDOM.render(
 <Provider store={store}>
