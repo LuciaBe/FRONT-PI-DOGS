@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:3001';
+
 import { SORT_HEIGHT,GET_TEMPERAMENTS, GET_DOG, GET_DOGS, GET_DOG_BY_NAME, FILTER_BY_SOURCE, FILTER_BY_TEMPERAMENTS, SORT_NAME, SORT_WEIGHT, REMOVE_FILTERS, CLEAN_DOG_DETAILS, LOADING, CREATE_DOG, UPDATE_DOG, DELETE_DOG} from './actionTypes';
 
 export const getDogs = () => {
     return async function(dispatch){
         dispatch(({type:LOADING}));
-        const apiData = await axios.get(`${SERVER_URL}/dogs`);
+        const apiData = await axios.get(`/dogs`);
         const dogs = apiData.data;
         dispatch({type:GET_DOGS, payload: dogs})
     }
@@ -15,7 +15,7 @@ export const getDogs = () => {
 export const getDog = (id) => {
     return async function(dispatch){
         dispatch({type:LOADING});
-        const apiData = await axios.get(`${SERVER_URL}/dogs/${id}`)
+        const apiData = await axios.get(`/dogs/${id}`)
         const dog = apiData.data;
         dispatch({type:GET_DOG, payload:dog})
     }
