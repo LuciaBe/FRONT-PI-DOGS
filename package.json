@@ -20,8 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "serve build -s -n -L -p $PORT",
-    "build": "react-scripts build",
+    "start": "serve build -s -n -L -p $PORT", 
+    "build": "chmod +x node_modules/.bin/react-scripts && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
